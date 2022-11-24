@@ -1,6 +1,6 @@
 package com.example.movieapp;
 
-import android.content.Context;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,12 +31,11 @@ public class ListMovieAdapter extends RecyclerView.Adapter<ListMovieAdapter.List
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ListMovieAdapter.ListViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ListMovieAdapter.ListViewHolder holder, @SuppressLint("RecyclerView") int position) {
         Movie movie = listMovies.get(position);
         Glide.with(holder.itemView.getContext()).load(movie.getPosterImage()).into(holder.ivMoviePoster);
         holder.tvMovieTitle.setText(movie.getTitle());
         holder.tvMovieDescription.setText(movie.getDescription());
-//        holder.tvMovieGenre.setText(movie.getGenre());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,13 +58,12 @@ public class ListMovieAdapter extends RecyclerView.Adapter<ListMovieAdapter.List
 
     public class ListViewHolder extends RecyclerView.ViewHolder {
         ImageView ivMoviePoster;
-        TextView tvMovieTitle, tvMovieDescription, tvMovieGenre;
+        TextView tvMovieTitle, tvMovieDescription;
 
         public ListViewHolder(@NonNull View itemView) {
             super(itemView);
             ivMoviePoster = itemView.findViewById(R.id.iv_movie_poster);
             tvMovieTitle = itemView.findViewById(R.id.tv_movie_title);
-//            tvMovieGenre = itemView.findViewById(R.id.tv_movie_genre);
             tvMovieDescription = itemView.findViewById(R.id.tv_movie_description);
         }
     }
