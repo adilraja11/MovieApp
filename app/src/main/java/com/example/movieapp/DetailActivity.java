@@ -12,7 +12,6 @@ public class DetailActivity extends AppCompatActivity {
 
     private TextView tvMovieTitle, tvMovieGenre, tvMovieDescription;
     private ImageView ivMoviePoster;
-    private MoviesData currentMovie;
     private ArrayList<Movie> listMovies = new ArrayList<>();
 
     @Override
